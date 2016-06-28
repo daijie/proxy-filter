@@ -1,7 +1,5 @@
 'use strict';
 
-require("babel-polyfill");
-
 var commander = require('commander'),
     program = require('./package.json'),
     fs = require('fs'),
@@ -13,13 +11,6 @@ commander.description('Verify proxy list').usage('--input <file ...> --output <f
 if (!commander.input) {
     console.error('please provide --input proxy list');
     process.exit(1);
-}
-
-if(commander.concurrency) {
-    detect.concurrency(commander.concurrency);
-}
-if(commander.timeout) {
-    detect.timeout(commander.timeout);
 }
 
 if (!fs.existsSync(commander.input)) {

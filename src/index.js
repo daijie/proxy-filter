@@ -1,4 +1,3 @@
-require("babel-polyfill");
 
 const commander = require('commander'),
     program = require('./package.json'),
@@ -37,7 +36,7 @@ if (commander.output) {
 }
 
 lineReader.on('line', function (line) {
-    detect.add({proxy: line}, (err, result)=>{
+    detect.add(line, (err, result)=>{
         if(result) {
             save.append({file: file, line: line}, ()=>{});
         }
