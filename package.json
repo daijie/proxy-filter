@@ -1,0 +1,28 @@
+{
+  "name": "proxy-filter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "pfilter": "pfilter"
+  },
+  "author": "daijie",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.10.1",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.6",
+    "commander": "^2.9.0",
+    "request": "^2.72.0"
+  }
+}
