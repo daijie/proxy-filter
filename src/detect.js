@@ -1,7 +1,8 @@
 const async = require('async'),
     request = require('./request.js');
 
-var queue = async.queue(({proxy, timeout}, callback) => {
+var timeout = 10000;
+var queue = async.queue((proxy, callback) => {
     if(proxy.indexOf('://')===-1) {
         proxy = 'http://' + proxy;
     }
@@ -13,7 +14,14 @@ var queue = async.queue(({proxy, timeout}, callback) => {
     });
 }, 10);
 
-export function add({proxy, timeout=10000, concurrency=10}, callback) {
+
+export function add(proxy, callback) {
+    queue.push(proxy, callback);
+}
+
+export function concurrency(concurrency=10) {
     queue.concurrency = concurrency;
-    queue.push({proxy, timeout}, callback);
+}
+export function timeout(timeout=10) {
+    timeout = timeout * 1000;
 }

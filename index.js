@@ -15,6 +15,13 @@ if (!commander.input) {
     process.exit(1);
 }
 
+if(commander.concurrency) {
+    detect.concurrency(commander.concurrency);
+}
+if(commander.timeout) {
+    detect.timeout(commander.timeout);
+}
+
 if (!fs.existsSync(commander.input)) {
     console.error(commander.input + ' not exists');
     process.exit(1);
@@ -30,7 +37,7 @@ if (commander.output) {
 }
 
 lineReader.on('line', function (line) {
-    detect.add({ proxy: line }, function (err, result) {
+    detect.add(line, function (err, result) {
         if (result) {
             save.append({ file: file, line: line }, function () {});
         }
