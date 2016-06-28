@@ -12,6 +12,11 @@
   },
   "author": "daijie",
   "license": "MIT",
+  "repository" :
+  { 
+      "type" : "git",
+      "url" : "https://github.com/daijie/proxy-filter.git"
+  },
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.10.1",
