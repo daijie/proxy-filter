@@ -17,4 +17,4 @@ Options:
 ```
 
 ## Example
-pfilter --input list.txt --output valid-proxy.txt
+`pfilter --input list.txt --output valid-proxy.txt`
