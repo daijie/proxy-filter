@@ -1,6 +1,10 @@
 # proxy-filter
 proxy-filter Verify proxy list
 
+## Installation
+`npm i proxy-filter -g`
+
+## Usage
 ```
 Usage: pfilter --input <file ...> --output <file ...>
 
