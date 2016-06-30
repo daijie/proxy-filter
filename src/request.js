@@ -1,12 +1,25 @@
 const request = require('request');
+var Agent = require('socks5-http-client/lib/Agent');
+
+var isString = (str) => {
+    return (typeof str)=='string';
+};
 
 export function check({proxy, timeout=10000}) {
     
     return new Promise((resolve, reject) => {
-        request.get('http://baidu.com', {
-            proxy: proxy,
+        let options = {
             timeout: timeout
-        }, (error, response, body) => {
+        };
+        
+        if(isString(proxy)) {
+            options.proxy = proxy;
+        } else {
+            options.agentClass = Agent;
+            options.agentOptions = proxy;
+        }
+        
+        request.get('http://baidu.com', options, (error, response, body) => {
             if(error) {
                 reject(0);
                 return;

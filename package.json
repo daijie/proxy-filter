@@ -1,21 +1,20 @@
 {
   "name": "proxy-filter",
-  "version": "1.0.3",
-  "description": "",
+  "version": "1.1.0",
+  "description": "validate the http/socks5 proxy in a list",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "pfilter": "pfilter"
+    "pfilter": "bin/pfilter"
   },
   "author": "daijie",
   "license": "MIT",
-  "repository" :
-  { 
-      "type" : "git",
-      "url" : "https://github.com/daijie/proxy-filter.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daijie/proxy-filter.git"
   },
   "devDependencies": {
     "babel": "^6.5.2",
@@ -28,6 +27,7 @@
   "dependencies": {
     "async": "^2.0.0-rc.6",
     "commander": "^2.9.0",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+    "socks5-http-client": "^1.0.2"
   }
 }
