@@ -40,3 +40,8 @@ If you specified --socks5 option, default protocol would be socks5. (supported i
 ```
 127.0.0.1:1080
 ```
+
+## Unix pipeline example
+```
+cat list.txt | pfilter > out.txt
+```
