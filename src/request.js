@@ -16,11 +16,9 @@ export function check({proxy, timeout=10000}) {
         if(isString(proxy)) {
             options.proxy = proxy;
         } else {
-            options.agentClass = Agent;
-            options.agentOptions = proxy;
+            options.agent = new Agent(proxy);
         }
-        
-        request.get('http://baidu.com', options, (error, response, body) => {
+        request.get('http://baidu.com/', options, (error, response, body) => {
             if(error) {
                 reject(0);
                 return;

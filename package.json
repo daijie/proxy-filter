@@ -1,6 +1,6 @@
 {
   "name": "proxy-filter",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "validate the http/socks5 proxy in a list",
   "main": "index.js",
   "scripts": {
