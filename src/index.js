@@ -17,21 +17,25 @@ commander
   .parse(process.argv);
 
 
-if (!commander.input) {
-    console.error('please provide --input proxy list');
-    process.exit(1);
-}
 if (commander.socks5) {
     detect.enable_socks5();
 }
 
-if(!fs.existsSync(commander.input)) {
+var stream;
+if (commander.input && !fs.existsSync(commander.input)) {
     console.error(commander.input+' not exists');
     process.exit(1);
 }
 
+if(commander.input) {
+    stream = fs.createReadStream(commander.input);
+} else {
+    process.stdin.setEncoding('utf8');
+    stream = process.stdin;
+}
+
 var lineReader = require('readline').createInterface({
-  input: fs.createReadStream(commander.input)
+  input: stream
 });
 
 var file = null;
