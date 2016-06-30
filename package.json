@@ -1,6 +1,6 @@
 {
   "name": "proxy-filter",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "validate the http/socks5 proxy in a list",
   "main": "index.js",
   "scripts": {
@@ -19,9 +19,10 @@
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0"
   },
   "dependencies": {

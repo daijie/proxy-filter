@@ -9,7 +9,8 @@ export function check({proxy, timeout=10000}) {
     
     return new Promise((resolve, reject) => {
         let options = {
-            timeout: timeout
+            timeout: timeout,
+            followRedirect: false
         };
         
         if(isString(proxy)) {

@@ -1,9 +1,7 @@
-
 const commander = require('commander'),
     program = require('../package.json'),
     fs = require('fs'),
-    detect = require('./detect.js'),
-    save = require('./save.js');
+    detect = require('./detect.js');
     
 commander
   .description('Verify proxy list')
@@ -21,12 +19,12 @@ if (commander.socks5) {
     detect.enable_socks5();
 }
 
-var stream;
 if (commander.input && !fs.existsSync(commander.input)) {
     console.error(commander.input+' not exists');
     process.exit(1);
 }
 
+var stream;
 if(commander.input) {
     stream = fs.createReadStream(commander.input);
 } else {
@@ -38,15 +36,15 @@ var lineReader = require('readline').createInterface({
   input: stream
 });
 
-var file = null;
+var file = process.stdout;
 if (commander.output) {
-    file = commander.output;
+    file = fs.createWriteStream(commander.output, { flags: 'a' });
 }
 
-lineReader.on('line', function (line) {
+lineReader.on('line',  (line) => {
     detect.add(line, (err, result)=>{
         if(result) {
-            save.append({file: file, line: line}, ()=>{});
+            file.write(line+'\r\n');
         }
     });
 });
