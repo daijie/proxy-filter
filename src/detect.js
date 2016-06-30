@@ -5,7 +5,7 @@ const async = require('async'),
 var socks5 = false;
 var timeout = 10000;
 
-var queue = async.queue(async.asyncify(async function (proxy) {
+var queue = async.queue((proxy, callback) => {
     if(proxy.indexOf('://')===-1) {
         if(socks5) {
             let [host, port=1080] = proxy.split(':');
@@ -17,12 +17,13 @@ var queue = async.queue(async.asyncify(async function (proxy) {
             proxy = 'http://' + proxy;
         }
     }
-    try {
-        return await request.check({proxy, timeout});
-    } catch (err) {
-        return false;
-    }
-}), 10);
+    let check = request.check({proxy, timeout});
+    check.then(()=>{
+        callback(null, true);
+    }).catch(()=>{
+        callback(null, false);
+    });
+}, 10);
 
 
 export function add(proxy, callback) {

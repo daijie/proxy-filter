@@ -2,7 +2,7 @@ const commander = require('commander'),
     program = require('../package.json'),
     fs = require('fs'),
     detect = require('./detect.js');
-    
+
 commander
   .description('Verify proxy list')
   .usage('--input <file ...> --output <file ...>')
