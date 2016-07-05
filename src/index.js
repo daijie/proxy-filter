@@ -19,6 +19,10 @@ if (commander.socks5) {
     detect.enable_socks5();
 }
 
+if(commander.timeout) {
+    detect.timeout(commander.timeout);
+}
+
 if (commander.input && !fs.existsSync(commander.input)) {
     console.error(commander.input+' not exists');
     process.exit(1);
